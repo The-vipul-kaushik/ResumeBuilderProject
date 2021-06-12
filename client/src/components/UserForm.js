@@ -9,6 +9,7 @@ import Education from './Education';
 import Success from './Success';
 import Extras from './Extras';
 import Final from './Final';
+import logo from '../images/cover.png';
 
 class UserForm extends Component {
 
@@ -144,19 +145,21 @@ class UserForm extends Component {
         //     extra_1, extra_2,
         //     extra_3, extra_4, extra_5
         // };
-
+        
         switch (step) {
             case 0:
                 return (
-                    <>
+                    <><img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                         <div className = "buttons" >
+                            <h1>Choose your favourite template</h1>
                             <a onClick={()=>this.nextStep()}><h5>Build Resume</h5></a>
-                            <a onClick={()=>this.tips()} style={{'background-color':'rgba(24, 180, 0, 0.918)'}}><h5>Tips for good resume</h5></a>
                         </div>  
                     </>
                 );
             case 1:
                 return (
+                    <>
+                        <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-dark">
 
@@ -169,11 +172,14 @@ class UserForm extends Component {
                         </div>
                         <br />
                     </div>
+                    </>
                 );
 
             case 2:
 
                 return (
+                    <>
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-success">
 
@@ -187,11 +193,14 @@ class UserForm extends Component {
                         </div>
                         <br />
                     </div>
+                    </>
                 );
 
             case 3:
 
                 return (
+                    <>
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-primary">
 
@@ -205,11 +214,14 @@ class UserForm extends Component {
                         </div>
                         <br />
                     </div>
+                    </>
                 );
 
             case 4:
 
                 return (
+                    <>
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-warning">
 
@@ -223,12 +235,15 @@ class UserForm extends Component {
                         </div>
                         <br />
                     </div>
+                    </>
                 );
 
 
             case 5:
 
                 return (
+                    <>
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-info">
 
@@ -241,11 +256,14 @@ class UserForm extends Component {
                         </div>
                         <br />
                     </div>
+                    </>
                 );
 
             case 6:
 
                 return (
+                    <>
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center ">
 
@@ -259,11 +277,14 @@ class UserForm extends Component {
                         </div>
                         <br />
                     </div>
+                    </>
                 );
 
             case 7:
 
                 return (
+                    <>
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-dark">
 
@@ -273,11 +294,13 @@ class UserForm extends Component {
                         </div>
                         <br />
                     </div>
+                    </>
                 );
             
             case 8:
 
                 return (
+                    
                     <div className="App pt-5 mt-5">
                         <div className="text-center">
                         <button type="button" className="btn btn-info " onClick={()=>this.nextStep()}><i className="fas fa-angle-left mr-1"></i>Back</button>
