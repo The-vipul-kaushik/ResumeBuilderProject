@@ -21,7 +21,6 @@ import Nav from './components/Nav';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
-<<<<<<< HEAD
 class App extends Component {
     render() {
         return (  
@@ -58,7 +57,6 @@ class App extends Component {
         </switch>
         </Router>
         );
-=======
 const ProtectedRoute = ({auth,component: Component,...rest}) => {
     return (
     <Route 
@@ -69,7 +67,6 @@ const ProtectedRoute = ({auth,component: Component,...rest}) => {
     (
         <Redirect to="SignIn"/>
     )
->>>>>>> 5e30051893c0f3ffefa69b32e9d3926a2b33a7b1
     }
     />
     );
