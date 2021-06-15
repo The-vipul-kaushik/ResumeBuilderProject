@@ -149,7 +149,8 @@ class UserForm extends Component {
         switch (step) {
             case 0:
                 return (
-                    <><img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
+                    <>
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                         <div className = "buttons" >
                             <h1>Choose your favourite template</h1>
                             <a onClick={()=>this.nextStep()}><h5>Build Resume</h5></a>
@@ -159,7 +160,7 @@ class UserForm extends Component {
             case 1:
                 return (
                     <>
-                        <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-dark">
 

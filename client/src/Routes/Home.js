@@ -8,9 +8,6 @@ import {
   
 
 import '../App.css';
-import UserForm from '../components/UserForm';
-import Login from '../components/Login';
-import Tips from '../components/Tips';
 import logo from '../images/default.png';
 
 class Home extends Component {
@@ -25,11 +22,6 @@ class Home extends Component {
                     <img src={logo} width="100%" />
                 </div>
             </div>
-            <switch>
-                <Route exact path="/Userform">
-                    <UserForm/>
-                </Route>
-            </switch>
             </Router>
         );
     }
