@@ -4,7 +4,8 @@ const pdf = require('html-pdf');
 const cors = require('cors');
 const path = require('path');
 
-const pdfTemplate = require('./documents');
+const ResumepdfTemplate = require('./documents/ResumeTemplate1');
+const CVpdfTemplate = require('./documents/CVTemplate1');
 
 const app = express();
 
@@ -17,22 +18,38 @@ app.use(bodyParser.json());
 
 // POST Route - PDF generation and fetching of the data
 
-app.post('/create-pdf', (req, res) => {
-    pdf.create(pdfTemplate(req.body), {}).toFile('Resume.pdf', (err) => {
+app.post('/create-Resumepdf1', (req, res) => {
+    pdf.create(ResumepdfTemplate(req.body), {}).toFile('Resume1.pdf', (err) => {
         if(err){
             res.send(Promise.reject());
             console.log(err);
         }
 
         res.send(Promise.resolve());
-        console.log('Success');
     });
+    console.log('Hello');
+});
+
+app.post('/create-CVpdf1', (req, res) => {
+    pdf.create(CVpdfTemplate(req.body), {}).toFile('CV1.pdf', (err) => {
+        if(err){
+            res.send(Promise.reject());
+            console.log(err);
+        }
+
+        res.send(Promise.resolve());
+    });
+    console.log('Hello');
 });
 
 
 // Get - Send generated pdf to the client
-app.get('/fetch-pdf', (req,res) => {
-    res.sendFile(`${__dirname}/Resume.pdf`);
+app.get('/fetch-Resumepdf1', (req,res) => {
+    res.sendFile(`${__dirname}/Resume1.pdf`);
+});
+
+app.get('/fetch-CVpdf1', (req,res) => {
+    res.sendFile(`${__dirname}/CV1.pdf`);
 });
 
 // Serve static assets if in production

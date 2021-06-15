@@ -19,18 +19,11 @@ class Home extends Component {
 
     render() {
         return (
-            <Router>
             <div className="home"> 
                 <div className="logo">
                     <img src={logo} width="100%" />
                 </div>
             </div>
-            <switch>
-                <Route exact path="/Userform">
-                    <UserForm/>
-                </Route>
-            </switch>
-            </Router>
         );
     }
 }

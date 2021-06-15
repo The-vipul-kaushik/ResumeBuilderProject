@@ -58,7 +58,7 @@ class Extras extends Component {
                     <br />
                     <div className="container text-center">
                         <button type="button" className="btn btn-info" onClick={this.back}><i className="fas fa-angle-left mr-1"></i>Back</button>
-                        <button type="submit" className="btn btn-warning">Preview resume<i className="fas fa-download ml-1"></i></button>
+                        <button type="submit" className="btn btn-warning">Preview resume<i className="fas fa-eye ml-1"></i></button>
                     </div>
                     <br />
                 </form>

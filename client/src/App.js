@@ -10,6 +10,7 @@ import {
 import './App.css';
 import Home from './Routes/Home';
 import UserForm from './components/UserForm';
+import CVuserForm from './components/CVuserForm';
 import Login from './components/Login';
 import Tips from './components/Tips';
 
@@ -21,7 +22,7 @@ class App extends Component {
             <Login />
             <div className="menubtns">
             <Link to="/UserForm"><h3>Resume</h3></Link>
-            <Link to=""><h3>CV</h3></Link>
+            <Link to="/CVuserForm"><h3>CV</h3></Link>
             <Link to="/tips"><h3>Tips</h3></Link>
             </div>
             </div>
@@ -32,13 +33,16 @@ class App extends Component {
                 <div>
                     <div className="tagline">
                         <h1>Create your professional resume <br/> in seconds</h1>
-                        <Link to="/Userform"><button className="btn btn-success">Build my resume now</button></Link>
+                        <Link to="/Userform"><button className="btn btn-warning " style={{'fontSize':'20px', 'borderRadius':'20px'}}>Build my resume now</button></Link>
                     </div>
                     
                 </div>
             </Route>
             <Route path="/UserForm"> 
-                <UserForm />
+                <UserForm homepath={<App/>}/>
+            </Route>
+            <Route path="/CVuserForm"> 
+                <CVuserForm homepath={<App/>}/>
             </Route>
             <Route path="/tips"> 
                 <Tips />

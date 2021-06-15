@@ -3,7 +3,7 @@ import '../App.css';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 
-class Final extends Component {
+class CVfinal extends Component {
 
     back = e => {
         e.preventDefault();
@@ -19,12 +19,11 @@ class Final extends Component {
         const data = this.props.values;
 
 
-        axios.post('/create-Resumepdf1', data)
-            .then(() => axios.get('fetch-Resumepdf1', { responseType: 'blob' }))
+        axios.post('/create-CVpdf1', data)
+            .then(() => axios.get('fetch-CVpdf1', { responseType: 'blob' }))
             .then((res) => {
                 const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-
-                saveAs(pdfBlob, 'Resume1.pdf');
+                saveAs(pdfBlob, 'CV1.pdf');
             });
 
         e.target.reset();
@@ -41,7 +40,7 @@ class Final extends Component {
                 <form onSubmit={this.formSubmit}>
                     <div className="container text-center mt-0">
                         <button type="button" className="btn btn-info mt-0" onClick={this.back}><i className="fas fa-angle-left mr-1"></i>Back</button>
-                        <button type="submit" className="btn btn-success mt-0">Download Resume<i className="fas fa-download ml-1"></i></button>
+                        <button type="submit" className="btn btn-success mt-0">Download CV<i className="fas fa-download ml-1"></i></button>
                     </div>
                     <br />
                 </form>
@@ -52,23 +51,22 @@ class Final extends Component {
                         <div className="row">
                             <div className="contact text-left">
                                 <h1><b>{values.name}</b></h1>
-                                <p>{values.careerObjective}</p>
+                                <p>{values.designation}</p>
                             </div>
                             <div className="contact text-right col-lg-3">
                                 <p className="lead email">{values.email} <i class="fas fa-envelope-square"></i></p>
                                 <p className="lead email">(+91){values.phone} <i class="fas fa-phone"></i></p>
                                 <p className="lead email">{values.linkedin} <i class="fab fa-linkedin-in"></i></p>
-                                <p className="lead email">{values.github} <i class="fab fa-github"></i></p>
                             </div>    
                         </div>
                 
                         <hr/>
                         <div className="col-lg-1">
-                            <h3><b>Skills</b></h3>
+                            <h3><b>Objective</b></h3>
                         </div>
                         <hr className="horiLine" />
-                        <div className="col-lg-3 text-left">
-                            <p className="lead"> {values.skills}</p>
+                        <div className="col-lg-12 text-left">
+                            <p className="lead"> {values.careerObjective}</p>
                         </div>
                     
                         <div className="col-lg-1 ">
@@ -82,6 +80,10 @@ class Final extends Component {
                         <div className="col-lg-4 col-sm-6 text-left">
                             <p className="lead mb-0"><b>{values.exp2_org}, {values.exp2_pos}</b> ({values.exp2_dur})</p>
                             <p className="mt-0 ml-0">{values.exp2_desc}</p>
+                        </div>
+                        <div className="col-lg-4 col-sm-6 text-left">
+                            <p className="lead mb-0"><b>{values.exp3_org}, {values.exp3_pos}</b> ({values.exp3_dur})</p>
+                            <p className="mt-0 ml-0">{values.exp3_desc}</p>
                         </div>
 
                     
@@ -115,14 +117,41 @@ class Final extends Component {
                         </div>
 
                         <div className="col-lg-6 text-left">
-                            <h3><b>Extra-Curriculars/Activities</b></h3>
+                            <h3><b>Achievements</b></h3>
                         </div>
                         <hr className="horiLine" />
+                        <div className="col-lg-8 text-left">
+                                <p className="lead mb-0">{values.achievement_1} </p>
+                                <p className="lead mb-0">{values.achievement_2} </p>
+                                <p className="lead mb-0">{values.achievement_3} </p>
+                                <p className="lead mb-3">{values.achievement_4} </p>
+                        </div>
+
                         <div className="col-lg-6 text-left">
-                                <p className="lead"><b>Hobbies: </b>{values.extra_2} </p>
-                                <p className="lead"><b>Extra-Curricular: </b>{values.extra_3}, {values.extra_4}, {values.extra_5} </p>
-                                <p className="lead"><b>Languages: </b>{values.extra_1} </p>
-                    </div>
+                            <h3><b>Awards</b></h3>
+                        </div>
+                        <hr className="horiLine" />
+                        <div className="col-lg-8 text-left">
+                                <p className="lead mb-0">{values.award_1} </p>
+                                <p className="lead mb-0">{values.award_2} </p>
+                                <p className="lead mb-0">{values.award_3} </p>
+                                <p className="lead mb-3">{values.award_4} </p>
+                        </div>
+
+                        <div className="col-lg-1 ">
+                            <h3><b>References</b></h3>
+                        </div>
+                        <hr className="horiLine" />
+                        <div className="col-lg-4 col-sm-6 text-left">
+                            <p className="lead mb-0"><b>{values.ref1_name}, {values.ref1_job}</b> ({values.ref1_rel})</p>
+                            <p className="mb-0"><b>Ph: </b>{values.ref1_phn}</p>
+                            <p className="mb-3"><b>Address: </b>{values.ref1_address}</p>
+                        </div>
+                        <div className="col-lg-4 col-sm-6 text-left">
+                            <p className="lead mb-0"><b>{values.ref2_name}, {values.ref2_job}</b> ({values.ref2_rel})</p>
+                            <p className="mb-0"><b>Ph: </b>{values.ref2_phn}</p>
+                            <p className="mb-3"><b>Address: </b>{values.ref2_address}</p>
+                        </div>
                 </div>
             </div>
         </>
@@ -130,4 +159,4 @@ class Final extends Component {
         )
     }}
 
-export default Final;
+export default CVfinal;

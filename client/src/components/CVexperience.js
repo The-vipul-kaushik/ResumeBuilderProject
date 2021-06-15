@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class Experience extends Component {
+class CVexperience extends Component {
 
     back = e => {
         e.preventDefault();
@@ -21,7 +21,7 @@ class Experience extends Component {
             <div className="card animated fadeInLeft">
                 <div className="card-body">
 
-                    <h3 className="card-title">Experience Information</h3>
+                    <h3 className="card-title">Experience Information onChange</h3>
                     <hr />
                 </div>
                 <form onSubmit={this.continue}>
@@ -77,28 +77,30 @@ class Experience extends Component {
                         </div>
                     </div>
                     <br/>
+
+                    
                     <div className="row col-lg-10 mx-auto">
                         <div className="col-lg-12 text-left">
-                            <h3><b><i className="fas fa-check-circle mr-1"></i>2</b></h3>
+                            <h3><b><i className="fas fa-check-circle mr-1"></i>3</b></h3>
                             <hr/>
                         </div>
                         <div className="col-lg-4 text-left">
                             <label>Institute/Organisation*</label>
-                            <input type="text" name="exp2_org" className="form-control" defaultValue={values.status === 1 ? '' : values.exp2_org} onChange={handleChange} required />
+                            <input type="text" name="exp3_org" className="form-control" defaultValue={values.status === 1 ? '' : values.exp2_org} onChange={handleChange} required />
                         </div>
                         <div className="col-lg-4 text-left">
                             <label>Position*</label>
-                            <input type="text" name="exp2_pos" className="form-control" defaultValue={values.status === 1 ? '' : values.exp2_pos} onChange={handleChange} required />
+                            <input type="text" name="exp3_pos" className="form-control" defaultValue={values.status === 1 ? '' : values.exp2_pos} onChange={handleChange} required />
                         </div>
                         <div className="col-lg-4 text-left">
                             <label>Duration*</label>
-                            <input type="text" name="exp2_dur" className="form-control" defaultValue={values.status === 1 ? '' : values.exp2_dur} onChange={handleChange} required />
+                            <input type="text" name="exp3_dur" className="form-control" defaultValue={values.status === 1 ? '' : values.exp2_dur} onChange={handleChange} required />
                         </div>
                     </div>
                     <div className="row col-lg-10 mx-auto">
                         <div className="col-lg-12 text-left">
                             <label>Description*</label>
-                            <input type="text" name="exp2_desc" className="form-control" defaultValue={values.status === 1 ? '' : values.exp2_desc} onChange={handleChange} required />
+                            <input type="text" name="exp3_desc" className="form-control" defaultValue={values.status === 1 ? '' : values.exp2_desc} onChange={handleChange} required />
                         </div>
                     </div>
                     <br/>
@@ -113,4 +115,4 @@ class Experience extends Component {
     }
 }
 
-export default Experience;
+export default CVexperience;
