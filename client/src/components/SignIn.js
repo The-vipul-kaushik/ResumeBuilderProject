@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
     const SignIn = () => {
 
-        const {auth,setAuth} = useContext(AuthContext);
+        const {setAuth} = useContext(AuthContext);
         const [user,setUser] = useState({
             email:"", password:"" 
         });

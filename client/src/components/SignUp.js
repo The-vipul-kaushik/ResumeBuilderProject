@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {Link as Linked} from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {AuthContext} from '../AuthContext';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -36,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
     const SignUp = () => {
 
+        const {setAuth} = useContext(AuthContext);
         const [user,setUser] = useState({
             firstName:"", lastName:"", email:"", password:"" 
         });
@@ -46,36 +50,6 @@ const useStyles = makeStyles((theme) => ({
             value = e.target.value;
 
             setUser({...user, [name] : value});
-        }
-
-        const postData = async (e) => {
-            e.preventDefault();
-            const {firstName, lastName, email, password} = user;
-
-            const res = await fetch("/SignUp",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    firstName,
-                    lastName,
-                    email,
-                    password
-                })
-            });
-            setUser({
-                firstName:"",
-                lastName:"",
-                email:"",
-                password:""
-            });
-            const data = await res.json();
-            if(res.status===200){
-            }
-            else{
-                window.alert('User already exist');
-            }
         }
 
         const classes = useStyles();
@@ -159,7 +133,40 @@ const useStyles = makeStyles((theme) => ({
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        onClick={postData}
+                        onClick={() => {
+                            const {firstName, lastName, email, password} = user;
+
+                            const res = await fetch("/SignUp",{
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    firstName,
+                                    lastName,
+                                    email,
+                                    password
+                                })
+                            });
+                            setUser({
+                                firstName:"",
+                                lastName:"",
+                                email:"",
+                                password:""
+                            });
+                            const data = await res.json();
+                            if(res.status===200){
+                                setAuth(true);
+                                cookies.set('jwttoken',data.message,{
+                                    // expires: new Date(Date.now() + 60*60*24),
+                                    // secure: false,
+                                    // httpOnly: true
+                                });
+                            }
+                            else{
+                                window.alert('User already exist');
+                            }
+                        }}
                     >
                         Sign Up
                     </Button>
