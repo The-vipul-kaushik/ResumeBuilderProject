@@ -28,14 +28,8 @@ connection.once("open",() => {
     console.log("Connection failed");
 });
 
-<<<<<<< HEAD
 app.post('/create-Resumepdf1', (req, res) => {
     pdf.create(ResumepdfTemplate(req.body), {}).toFile('Resume1.pdf', (err) => {
-=======
-// POST Route - PDF generation and fetching of the data
-app.post('/create-pdf', (req, res) => {
-    pdf.create(pdfTemplate(req.body), {}).toFile('Resume.pdf', (err) => {
->>>>>>> 5e30051893c0f3ffefa69b32e9d3926a2b33a7b1
         if(err){
             res.send(Promise.reject());
             console.log(err);
