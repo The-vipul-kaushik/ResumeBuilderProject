@@ -8,9 +8,6 @@ import {
   
 
 import '../App.css';
-import UserForm from '../components/UserForm';
-import Login from '../components/Login';
-import Tips from '../components/Tips';
 import logo from '../images/default.png';
 
 class Home extends Component {
@@ -24,6 +21,10 @@ class Home extends Component {
                     <img src={logo} width="100%" />
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+            </Router>
+>>>>>>> 5e30051893c0f3ffefa69b32e9d3926a2b33a7b1
         );
     }
 }

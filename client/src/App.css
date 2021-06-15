@@ -209,6 +209,7 @@ body{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: black;
 }
+<<<<<<< HEAD
 .horiLine{
   border-bottom: 4px solid black;
   width: 98%;
@@ -217,3 +218,5 @@ body{
   margin: 0px;
   margin-left: 15px;
 }
+=======
+>>>>>>> 5e30051893c0f3ffefa69b32e9d3926a2b33a7b1

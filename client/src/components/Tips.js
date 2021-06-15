@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import logo from '../images/cover.png';
 
 
-class Tips extends Component{
-    render(){
+
+const Tips = () =>{
         return (
             <div className="App pt-5 mt-5">
                 <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'fixed'}} />
@@ -53,6 +53,5 @@ class Tips extends Component{
                 </div>
             </div>
         );
-    }
 }
 export default Tips;
