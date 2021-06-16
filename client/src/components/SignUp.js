@@ -133,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        onClick={() => {
+                        onClick={ async() => {
                             const {firstName, lastName, email, password} = user;
 
                             const res = await fetch("/SignUp",{

@@ -21,10 +21,6 @@ class Home extends Component {
                     <img src={logo} width="100%" />
                 </div>
             </div>
-<<<<<<< HEAD
-=======
-            </Router>
->>>>>>> 5e30051893c0f3ffefa69b32e9d3926a2b33a7b1
         );
     }
 }

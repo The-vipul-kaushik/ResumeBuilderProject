@@ -209,14 +209,56 @@ body{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: black;
 }
-<<<<<<< HEAD
-.horiLine{
-  border-bottom: 4px solid black;
-  width: 98%;
-  position: relative;
-  top: -10px;
-  margin: 0px;
-  margin-left: 15px;
+.dropbtn {
+  border: none;
+  padding: 10px;
+  margin-right: 60px;
+  width: 120px;
+  height: 40px;
 }
-=======
->>>>>>> 5e30051893c0f3ffefa69b32e9d3926a2b33a7b1
+.dropbtn i{
+  font-size: 26px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #94d3f8;}
+
+.account{
+  height: auto;
+  width: 100%;
+  top: 150px;
+  position:absolute;
+  /* border:  4px solid green; */
+}
