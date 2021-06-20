@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
+import {storage} from '../firebase';
 
 class Final extends Component {
 
@@ -23,8 +24,25 @@ class Final extends Component {
             .then(() => axios.get('fetch-Resumepdf1', { responseType: 'blob' }))
             .then((res) => {
                 const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-
-                saveAs(pdfBlob, 'Resume1.pdf');
+                const pdfname = Math.floor(Math.random() * 1000000000) + 1;
+                const uploadTask = storage.ref(`resumes/${data.name}_Resume_${pdfname}`).put(pdfBlob);
+                uploadTask.on("state_changed",snapshot => {},
+                error => {
+                    console.log(error);
+                },
+                () => {
+                    storage
+                        .ref("resumes") 
+                        .child(`${data.name}_Resume_${pdfname}`)
+                        .getDownloadURL()
+                        .then(async (url) => {
+                            let payload = {Url: url};
+                            let res = await axios.post('GetResumeUrl', payload);
+                            let data = res.data;
+                        });
+                }
+                );
+                saveAs(pdfBlob, `${data.name}_Resume_${pdfname}.pdf`);
             });
 
         e.target.reset();

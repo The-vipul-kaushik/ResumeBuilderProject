@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 export default class CVsuccess extends Component {
     
@@ -17,7 +18,7 @@ export default class CVsuccess extends Component {
             <br/>
             
         </div>  
-        <button className="btn btn-success" onClick={this.props.nextStep}>Go to home page</button>
+        <Link to="/Userform"><button className="btn btn-success">Go to home page</button></Link>
       </div>
     )
   }

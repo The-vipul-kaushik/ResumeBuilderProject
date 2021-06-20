@@ -7,6 +7,7 @@ const signupSchema = require('./SignUpmodel');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
 
 dotenv.config();
 
@@ -19,8 +20,9 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
-mongoose.connect(process.env.MONGO_CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true});
+mongoose.connect(process.env.MONGO_CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
 const connection = mongoose.connection;
 connection.once("open",() => {
     console.log("Database connected");
@@ -37,7 +39,6 @@ app.post('/create-Resumepdf1', (req, res) => {
 
         res.send(Promise.resolve());
     });
-    console.log('Hello');
 });
 
 app.post('/create-CVpdf1', (req, res) => {
@@ -49,8 +50,65 @@ app.post('/create-CVpdf1', (req, res) => {
 
         res.send(Promise.resolve());
     });
-    console.log('Hello');
 });
+
+app.post('/GetResumeUrl',async (req,res) => {
+    const Url = req.body;
+    const cookietoken = req.cookies.jwttoken;
+    try {
+        const user = await signupSchema.findOne({tokens : {$elemMatch: {token: cookietoken}}}).exec();
+        const ResumeUrl = {Url: Url};
+        user.ResumeUrls.push(ResumeUrl);
+        await user.save();
+    } catch (error) {
+        console.log(error)
+    }
+    
+})
+
+app.post('/GetCVUrl',async (req,res) => {
+    const Url = req.body;
+    const cookietoken = req.cookies.jwttoken;
+    try {
+        const user = await signupSchema.findOne({tokens : {$elemMatch: {token: cookietoken}}}).exec();
+        const CVUrl = {Url: Url};
+        user.CVUrls.push(CVUrl);
+        await user.save();
+    } catch (error) {
+        console.log(error);
+    }
+    
+})
+
+app.get('/GetResume',async (req,res) => {
+    const cookietoken = req.cookies.jwttoken;
+    try {
+        const user = await signupSchema.findOne({tokens : {$elemMatch: {token: cookietoken}}}).exec();
+        if(user.ResumeUrls.length!=0){
+            res.send(user.ResumeUrls);
+        }
+        else{
+            res.status(404).json({message: 'No resume exist'});
+        }
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+app.get('/GetCV',async (req,res) => {
+    const cookietoken = req.cookies.jwttoken;
+    try {
+        const user = await signupSchema.findOne({tokens : {$elemMatch: {token: cookietoken}}}).exec();
+        if(user.CVUrls.length!=0){
+            res.send(user.CVUrls);
+        }
+        else{
+            res.status(404).json({message: 'No CV exist'});
+        }
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 app.post('/SignUp',async (req,res) => {
     //creating new instance every time
@@ -73,8 +131,8 @@ app.post('/SignUp',async (req,res) => {
 
         const userExist = await signupSchema.findOne({email: email}).exec();
         if(userExist==null){
-            signupschema.generateAuthToken();
-            res.json({message: 'success'});
+            const token = await signupschema.generateAuthToken();
+            res.json({message: token});
         }
         else{
             res.status(409).json({error: 'User already exist'});

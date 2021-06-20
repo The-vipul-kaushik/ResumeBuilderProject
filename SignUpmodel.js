@@ -22,6 +22,14 @@ const SignUpSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    ResumeUrls:{
+        type: Array,
+        default: []   
+    },
+    CVUrls:{
+        type: Array,
+        default: []   
+    },
     tokens: [
         {
             token: {

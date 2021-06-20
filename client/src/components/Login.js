@@ -12,14 +12,14 @@ const Login = () => {
             { auth ? 
             (<>
                 <div class="dropdown">
-                <button class="dropbtn"><i class="far fa-user-circle"></i></button>
-                <div class="dropdown-content">
-                <Link to="/Account">My account</Link>
-                <Link to="/SignIn" onClick={() => {
-                setAuth(false);
-                cookies.remove('jwttoken');
-            }}>LogOut</Link>
-                </div>
+                    <button class="dropbtn"><i class="far fa-user-circle"></i></button>
+                    <div class="dropdown-content">
+                    <Link to="/Account">My account</Link>
+                    <Link to="/SignIn" onClick={() => {
+                            setAuth(false);
+                            cookies.remove('jwttoken');
+                    }}>LogOut</Link>
+                    </div>
                 </div>
             
             </>) : 
