@@ -55,6 +55,13 @@ class Extras extends Component {
                             <label htmlFor="extra_5">Activity/Achievement</label>
                         </div>
                     </div>
+
+                    <div className="row col-lg-10 mx-auto">
+                        <div className="col-lg-12 md-form">
+                            <input type="text" name="resume_title" id="extra_6" className="form-control" defaultValue={values.status === 1 ? '' : values.resume_title} onChange={handleChange} required/>
+                            <label htmlFor="extra_5">Title/Name for resume</label>
+                        </div>
+                    </div>
                     <br />
                     <div className="container text-center">
                         <button type="button" className="btn btn-info" onClick={this.back}><i className="fas fa-angle-left mr-1"></i>Back</button>

@@ -32,6 +32,8 @@
     "not op_mini all"
   ],
   "react-dotenv": {
-    "whitelist": ["STORAGE_KEY"]
+    "whitelist": [
+      "STORAGE_KEY"
+    ]
   }
 }

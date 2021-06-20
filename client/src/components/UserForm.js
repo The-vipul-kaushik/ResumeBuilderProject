@@ -9,6 +9,7 @@ import Education from './Education';
 import Success from './Success';
 import Extras from './Extras';
 import Final from './Final';
+import Nav2 from './Nav2';
 import logo from '../images/cover.png';
 import temp1 from '../images/temp1.jpg';
 
@@ -60,7 +61,7 @@ class UserForm extends Component {
         extra_4: 'Ludo',
         extra_5: 'Cricket',
 
-
+        resume_title: '',
         status: 0
 
     }
@@ -134,25 +135,12 @@ class UserForm extends Component {
     } */
     render() {
         const { step } = this.state;
-        // const { name, email, phone, linkedin, github, skills, exp1_org, exp1_pos, exp1_desc, exp1_dur,
-        //     exp2_org, exp2_pos, exp2_desc, exp2_dur, status, proj1_title, proj1_link, proj1_desc,
-        //     proj2_title, proj2_link, proj2_desc, edu1_school, edu1_year, edu1_qualification,
-        //     edu1_desc, edu2_school, edu2_year, edu2_qualification, edu2_desc, extra_1, extra_2,
-        //     extra_3, extra_4, extra_5 } = this.state;
-        // const values = {
-        //     name, email, phone, linkedin, github, skills, exp1_org, exp1_pos, exp1_desc, exp1_dur,
-        //     exp2_org, exp2_pos, exp2_desc, exp2_dur, edu1_school, edu1_year, edu1_qualification,
-        //     edu1_desc, edu2_school, edu2_year, edu2_qualification, edu2_desc, status, proj1_title,
-        //     proj1_link, proj1_desc,
-        //     proj2_title, proj2_link, proj2_desc,
-        //     extra_1, extra_2,
-        //     extra_3, extra_4, extra_5
-        // };
         
         switch (step) {
             case 0:
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                         <div className = "buttons" >
                             <h1>Choose a Resume template</h1>
@@ -163,6 +151,7 @@ class UserForm extends Component {
             case 1:
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-dark">
@@ -183,6 +172,7 @@ class UserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-success">
@@ -204,6 +194,7 @@ class UserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-primary">
@@ -225,6 +216,7 @@ class UserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-warning">
@@ -247,6 +239,7 @@ class UserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-info">
@@ -267,6 +260,7 @@ class UserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center ">
@@ -288,6 +282,7 @@ class UserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-dark">

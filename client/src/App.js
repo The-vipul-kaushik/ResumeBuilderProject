@@ -69,9 +69,10 @@ const App = () => {
         return (
                 <AuthContext.Provider value={{auth,setAuth}}>
                 <Router>
-                    <Nav />
+                    
                     <switch>
                         <Route exact path="/"> 
+                            <Nav />
                             <Home />
                             <div>
                                 <div className="tagline">
