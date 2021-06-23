@@ -32,7 +32,8 @@ module.exports = ({
     extra_2,
     extra_3,
     extra_4,
-    extra_5
+    extra_5,
+    resume_title
 }) => {
      return `
     <!doctype html>

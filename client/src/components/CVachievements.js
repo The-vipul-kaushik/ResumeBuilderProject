@@ -46,6 +46,12 @@ class CVachievements extends Component {
                             <label htmlFor="extra_4">Achievement</label>
                         </div>
                     </div>
+                    <div className="row col-lg-10 mx-auto">
+                        <div className="col-lg-12 md-form">
+                            <input type="text" name="cv_title" id="extra_6" className="form-control" defaultValue={values.status === 1 ? '' : values.cv_title} onChange={handleChange} required/>
+                            <label htmlFor="extra_5">Title/Name for CV</label>
+                        </div>
+                    </div>
 
                     {/* <div className="row col-lg-10 mx-auto">
                         <div className="col-lg-12 md-form">

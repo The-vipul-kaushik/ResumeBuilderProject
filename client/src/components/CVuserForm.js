@@ -11,6 +11,7 @@ import CVachievements from './CVachievements';
 import CVawards from './CVawards';
 import CVreference from './CVreference';
 import CVfinal from './CVfinal';
+import Nav2 from './Nav2';
 import logo from '../images/cover.png';
 import temp1 from '../images/CVtemp1.JPG';
 
@@ -82,7 +83,7 @@ class CVuserForm extends Component {
         ref2_phn: '1234567890',
         ref2_address: 'GZB',
 
-
+        cv_title:'',
 
 
         status: 0
@@ -176,7 +177,9 @@ class CVuserForm extends Component {
         switch (step) {
             case 0:
                 return (
-                    <><img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
+                    <>
+                    <Nav2 />
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                         <div className = "buttons" >
                             <h1>Choose a CV template</h1>
                             <a onClick={()=>this.nextStep()}><img src={temp1}></img></a>
@@ -186,6 +189,7 @@ class CVuserForm extends Component {
             case 1:
                 return (
                     <>
+                    <Nav2 />
                         <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-dark">
@@ -206,6 +210,7 @@ class CVuserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-success">
@@ -227,6 +232,7 @@ class CVuserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-primary">
@@ -248,6 +254,7 @@ class CVuserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-warning">
@@ -270,6 +277,7 @@ class CVuserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-info">
@@ -290,6 +298,7 @@ class CVuserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-info">
@@ -310,6 +319,7 @@ class CVuserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-info">
@@ -330,6 +340,7 @@ class CVuserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center ">
@@ -351,6 +362,7 @@ class CVuserForm extends Component {
 
                 return (
                     <>
+                    <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-dark">

@@ -49,7 +49,8 @@ module.exports = ({
     ref2_job,
     ref2_rel,
     ref2_phn,
-    ref2_address
+    ref2_address,
+    cv_title
 
 }) => {
      return `
