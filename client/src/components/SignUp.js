@@ -155,16 +155,19 @@ const useStyles = makeStyles((theme) => ({
                                 password:""
                             });
                             const data = await res.json();
-                            if(res.status===200){
+                            if(res.status==422){
+                                window.alert('All fields are required');
+                            }
+                            else if(res.status==409){
+                                window.alert('User already exist');
+                            }
+                            else{
                                 setAuth(true);
                                 cookies.set('jwttoken',data.message,{
                                     // expires: new Date(Date.now() + 60*60*24),
                                     // secure: false,
                                     // httpOnly: true
                                 });
-                            }
-                            else{
-                                window.alert('User already exist');
                             }
                         }}
                     >
