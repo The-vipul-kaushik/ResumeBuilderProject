@@ -26,6 +26,7 @@ class Final extends Component {
                 const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
                 const pdfname = Math.floor(Math.random() * 1000000000) + 1;
                 const uploadTask = storage.ref(`resumes/${data.name}_Resume_${pdfname}`).put(pdfBlob);
+                const title = data.resume_title;
                 uploadTask.on("state_changed",snapshot => {},
                 error => {
                     console.log(error);
@@ -36,7 +37,7 @@ class Final extends Component {
                         .child(`${data.name}_Resume_${pdfname}`)
                         .getDownloadURL()
                         .then(async (url) => {
-                            let payload = {Url: url};
+                            let payload = {Url: url,ResumeName: title};
                             let res = await axios.post('GetResumeUrl', payload);
                             let data = res.data;
                         });

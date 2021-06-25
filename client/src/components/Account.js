@@ -1,16 +1,30 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
-import { AuthContext } from '../AuthContext';
 import logo from '../images/cover.png';
 import AccountCard from './AccountCard';
+import {DeleteContext} from '../DeleteContext';
 
 const Account = () => {
-    const {auth} = useContext(AuthContext);
 
     const [urlList,setUrl] = useState([]);
+    const [RList,setRList] = useState([]);
+    const [CList,setCList] = useState([]);
     const [resume,setResume] = useState(false);
 
+    const accountshow = () => {
+        return (
+            <div className="account2 text-center">
+                <AccountCard/>
+            </div>
+        );
+    }
+
+    useEffect(() => {
+        accountshow();
+    },[urlList,RList,CList]);
+
     return(
+        <DeleteContext.Provider value={{urlList,RList,CList,resume,setUrl,setRList,setCList,setResume}}>
         <div>
         <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                 <div className="account1 text-center">
@@ -23,7 +37,8 @@ const Account = () => {
                             window.alert('No Resume exist');
                         }
                         else{
-                            setUrl(data);
+                            setUrl(data.urls);
+                            setRList(data.titles);
                             setResume(true);
                         }
                     }}>My Resumes</button>
@@ -36,18 +51,15 @@ const Account = () => {
                             window.alert('No CV exist');
                         }
                         else{
-                            setUrl(data);
+                            setUrl(data.urls);
+                            setCList(data.titles);
                             setResume(false);
                         }
                     }}>My CVs </button>
                 </div>
-                <div className="account2 text-center">
-                    <AccountCard
-                        urlList = {urlList}
-                        resume = {resume}
-                    />
-                </div>
+                {accountshow()}
         </div>
+        </DeleteContext.Provider>
     );
 }
 

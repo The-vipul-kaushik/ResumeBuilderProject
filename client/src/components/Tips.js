@@ -7,7 +7,6 @@ const Tips = () =>{
         return (
             <div className="App pt-5 mt-5">
                 <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'fixed'}} />
-                
                 <div className="tips">
                     <h1>5 Resume Writing Tips To Help You Land a Job</h1>
                     <h3>1. Look for keywords in the job postings</h3>

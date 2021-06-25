@@ -22,6 +22,14 @@ const SignUpSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    resumetitles:{
+        type: Array,
+        default: []
+    },
+    cvtitles:{
+        type: Array,
+        default: []
+    },
     ResumeUrls:{
         type: Array,
         default: []   

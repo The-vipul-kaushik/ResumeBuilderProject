@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
+const {v4 : uuidv4} = require('uuid');
 
 dotenv.config();
 
@@ -53,12 +54,14 @@ app.post('/create-CVpdf1', (req, res) => {
 });
 
 app.post('/GetResumeUrl',async (req,res) => {
-    const Url = req.body;
+    const {Url,ResumeName} = req.body;
     const cookietoken = req.cookies.jwttoken;
     try {
         const user = await signupSchema.findOne({tokens : {$elemMatch: {token: cookietoken}}}).exec();
-        const ResumeUrl = {Url: Url};
+        const ResumeUrl = {_id: uuidv4(),Url: Url};
+        const ResumeTitle = {_id: uuidv4(),title: ResumeName}
         user.ResumeUrls.push(ResumeUrl);
+        user.resumetitles.push(ResumeTitle);
         await user.save();
     } catch (error) {
         console.log(error)
@@ -67,12 +70,14 @@ app.post('/GetResumeUrl',async (req,res) => {
 })
 
 app.post('/GetCVUrl',async (req,res) => {
-    const Url = req.body;
+    const {Url,CVName} = req.body;
     const cookietoken = req.cookies.jwttoken;
     try {
         const user = await signupSchema.findOne({tokens : {$elemMatch: {token: cookietoken}}}).exec();
-        const CVUrl = {Url: Url};
+        const CVUrl = {_id: uuidv4(),Url: Url};
+        const CVTitle = {_id: uuidv4(),title: CVName}
         user.CVUrls.push(CVUrl);
+        user.cvtitles.push(CVTitle);
         await user.save();
     } catch (error) {
         console.log(error);
@@ -84,8 +89,10 @@ app.get('/GetResume',async (req,res) => {
     const cookietoken = req.cookies.jwttoken;
     try {
         const user = await signupSchema.findOne({tokens : {$elemMatch: {token: cookietoken}}}).exec();
-        if(user.ResumeUrls.length!=0){
-            res.send(user.ResumeUrls);
+        if(user.ResumeUrls.length!=0 && user.resumetitles.length!=0){
+            const urls = user.ResumeUrls;
+            const titles = user.resumetitles;
+            res.send({urls: urls,titles: titles});
         }
         else{
             res.status(404).json({message: 'No resume exist'});
@@ -99,12 +106,77 @@ app.get('/GetCV',async (req,res) => {
     const cookietoken = req.cookies.jwttoken;
     try {
         const user = await signupSchema.findOne({tokens : {$elemMatch: {token: cookietoken}}}).exec();
-        if(user.CVUrls.length!=0){
-            res.send(user.CVUrls);
+        if(user.CVUrls.length!=0 && user.cvtitles.length!=0){
+            const urls = user.CVUrls;
+            const titles = user.cvtitles;
+            res.send({urls: urls,titles: titles});
         }
         else{
             res.status(404).json({message: 'No CV exist'});
         }
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+app.post('/Delete',async (req,res) => {
+    const {uid, rcid, rorcv} = req.body;
+    const cookietoken = req.cookies.jwttoken;
+    try {
+        const user = await signupSchema.findOne({tokens : {$elemMatch: {token: cookietoken}}}).exec();
+        if(rorcv){
+            signupSchema.updateOne( 
+                { _id: user._id },
+                {
+                    $pull: {
+                        ResumeUrls: { _id : uid }
+                    }
+                },
+                { safe: true },
+                function removeConnectionsCB(err, obj) {
+                    // ...
+                }
+            );
+            signupSchema.updateOne( 
+                { _id: user._id },
+                {
+                    $pull: {
+                        resumetitles: { _id : rcid }
+                    }
+                },
+                { safe: true },
+                function removeConnectionsCB(err, obj) {
+                    // ...
+                }
+            );
+        }
+        else{
+            signupSchema.updateOne( 
+                { _id: user._id },
+                {
+                    $pull: {
+                        CVUrls: { _id : uid }
+                    }
+                },
+                { safe: true },
+                function removeConnectionsCB(err, obj) {
+                    // ...
+                }
+            );
+            signupSchema.updateOne( 
+                { _id: user._id },
+                {
+                    $pull: {
+                        cvtitles: { _id : rcid }
+                    }
+                },
+                { safe: true },
+                function removeConnectionsCB(err, obj) {
+                    // ...
+                }
+            );
+        }
+        res.status(200).json({message: 'success'});
     } catch (error) {
         console.log(error);
     }
