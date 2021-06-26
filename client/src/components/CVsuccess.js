@@ -18,7 +18,7 @@ export default class CVsuccess extends Component {
             <br/>
             
         </div>  
-        <Link to="/Userform"><button className="btn btn-success">Go to home page</button></Link>
+        <button className="btn btn-success" onClick={this.props.nextStep} >Make another CV</button>
       </div>
     )
   }

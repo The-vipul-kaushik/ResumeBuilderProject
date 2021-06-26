@@ -1,10 +1,12 @@
 import React from 'react';
 import logo from '../images/cover.png';
-
+import Nav2 from './Nav2';
 
 
 const Tips = () =>{
         return (
+            <>
+            <Nav2/>
             <div className="App pt-5 mt-5">
                 <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'fixed'}} />
                 <div className="tips">
@@ -51,6 +53,7 @@ const Tips = () =>{
                     
                 </div>
             </div>
+            </>
         );
 }
 export default Tips;

@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import {DeleteContext} from '../DeleteContext';
 
+
 const useStyles = makeStyles({
     root: {
       maxWidth: 345,
@@ -50,6 +51,7 @@ const AccountCard = () => {
             urlList.length!=0 ? 
             (urlList.map((value, index) => {
                 return (
+
                     <Card className={classes.root,classes.cardMargin}>
                     <CardActionArea>
                         <CardMedia
@@ -65,11 +67,11 @@ const AccountCard = () => {
                     </CardActionArea>
                     <CardActions>
                         <Link href={value.Url} target="_blank">
-                        <Button variant="contained" color="primary">
+                        <Button color="primary" >
                             View
                         </Button>
                         </Link>
-                        <Button variant="contained" color="primary" onClick={async () => {
+                        <Button color="secondary" onClick={async () => {
                             let rid = "";
                             if(resume){
                                 rid=id1[index];

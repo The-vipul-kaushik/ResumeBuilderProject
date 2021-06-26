@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {AuthContext} from '../AuthContext';
 import Cookies from 'universal-cookie';
+import validator from 'validator';
 const cookies = new Cookies();
 
 const useStyles = makeStyles((theme) => ({
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
     const SignIn = () => {
-
+        const [emailError, setEmailError] = useState('')
         const {setAuth} = useContext(AuthContext);
         const [user,setUser] = useState({
             email:"", password:"" 
@@ -49,6 +50,19 @@ const useStyles = makeStyles((theme) => ({
             value = e.target.value;
 
             setUser({...user, [name] : value});
+            if(name==="email")
+            {
+                if(value==='') {
+                setEmailError('')
+              }
+              else if(validator.isEmail(value))
+              {
+                setEmailError('Valid Email :)')  
+              }
+              else {
+                setEmailError('Enter Valid Email!')
+              }
+            }
         }
 
         const classes = useStyles();
@@ -71,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
                         id="email"
                         label="Email Address"
                         name="email"
+                        type="email"
                         autoComplete="email"
                         value={user.email}
                         onChange={handleChage}
@@ -93,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
                     />
-                    <Linked to="/UserForm">
+                    <Linked to="/">
                     <Button
                         type="submit"
                         fullWidth

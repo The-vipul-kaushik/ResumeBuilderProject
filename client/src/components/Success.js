@@ -17,7 +17,7 @@ export default class Success extends Component {
             <br/>
             
         </div>  
-        <button className="btn btn-success" onClick={this.props.nextStep}>Go to home page</button>
+        <button className="btn btn-success" onClick={this.props.nextStep}>Make another resume</button>
       </div>
     )
   }

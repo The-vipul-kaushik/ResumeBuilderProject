@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {AuthContext} from '../AuthContext';
 import Cookies from 'universal-cookie';
+import validator from 'validator';
 const cookies = new Cookies();
 
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
     const SignUp = () => {
 
+        const [emailError,setEmailError]=useState()
         const {setAuth} = useContext(AuthContext);
         const [user,setUser] = useState({
             firstName:"", lastName:"", email:"", password:"" 
@@ -50,6 +52,19 @@ const useStyles = makeStyles((theme) => ({
             value = e.target.value;
 
             setUser({...user, [name] : value});
+            if(name==="email")
+            {
+                if(value==='') {
+                setEmailError('')
+              }
+              else if(validator.isEmail(value))
+              {
+                setEmailError('Valid Email :)')  
+              }
+              else {
+                setEmailError('Enter Valid Email!')
+              }
+            }
         }
 
         const classes = useStyles();
@@ -104,6 +119,10 @@ const useStyles = makeStyles((theme) => ({
                             value={user.email}
                             onChange={handleChage}
                         />
+                        <span style={{
+                        fontWeight: 'bold',
+                        color: 'red',
+                        }}>{emailError}</span>
                         </Grid>
                         <Grid item xs={12}>
                         <TextField
@@ -155,16 +174,19 @@ const useStyles = makeStyles((theme) => ({
                                 password:""
                             });
                             const data = await res.json();
-                            if(res.status===200){
+                            if(res.status==422){
+                                window.alert('All fields are required');
+                            }
+                            else if(res.status==409){
+                                window.alert('User already exist');
+                            }
+                            else{
                                 setAuth(true);
                                 cookies.set('jwttoken',data.message,{
                                     // expires: new Date(Date.now() + 60*60*24),
                                     // secure: false,
                                     // httpOnly: true
                                 });
-                            }
-                            else{
-                                window.alert('User already exist');
                             }
                         }}
                     >

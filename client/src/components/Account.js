@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../App.css';
 import logo from '../images/cover.png';
 import AccountCard from './AccountCard';
+import Nav2 from './Nav2';
 import {DeleteContext} from '../DeleteContext';
 
 const Account = () => {
@@ -26,6 +27,7 @@ const Account = () => {
     return(
         <DeleteContext.Provider value={{urlList,RList,CList,resume,setUrl,setRList,setCList,setResume}}>
         <div>
+        <Nav2/>
         <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                 <div className="account1 text-center">
                     <button type="button" className="btn btn-outline-dark " onClick={async () => {

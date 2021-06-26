@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-/*import axios from 'axios';
-import { saveAs } from 'file-saver';*/
 import PersonalDetails from './PersonalDetails';
 import Experience from './Experience';
 import Project from './Project';
@@ -70,7 +68,7 @@ class UserForm extends Component {
     nextStep = () => {
         const { step } = this.state;
         this.setState({
-            step: step<7 ? step + 1 : 0
+            step: step<7 ? step + 1 : 0 
         });
     };
 
@@ -99,40 +97,7 @@ class UserForm extends Component {
 
     handleChange = ({ target: { value, name } }) => this.setState({ [name]: value })
 
-    /*formSubmit = (e) => {
-        e.preventDefault();
-
-        const data = {
-            name: this.state.name,
-            email: this.state.email,
-            phone: this.state.phone,
-            linkedin: this.state.linkedin,
-            github: this.state.github,
-            skills: this.state.skills
-        }
-
-
-        axios.post('/create-pdf', data)
-            .then(() => axios.get('fetch-pdf', { responseType: 'blob' }))
-            .then((res) => {
-                const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-
-                saveAs(pdfBlob, 'Resume.pdf');
-            });
-
-        e.target.reset();
-
-    } */
-
-    /*createAndDownloadPdf = () => {
-      axios.post('/create-pdf', this.state)
-           .then(() => axios.get('fetch-pdf', { responseType: 'blob' }))
-           .then((res) => {
-              const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-  
-              saveAs(pdfBlob, 'Resume.pdf');
-           })
-    } */
+    
     render() {
         const { step } = this.state;
         
@@ -141,7 +106,7 @@ class UserForm extends Component {
                 return (
                     <>
                     <Nav2 />
-                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
+                    <img src={logo} height="70" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                         <div className = "buttons" >
                             <h1>Choose a Resume template</h1>
                             <a onClick={()=>this.nextStep()}><img src={temp1}></img></a>

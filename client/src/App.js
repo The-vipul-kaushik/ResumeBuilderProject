@@ -77,7 +77,7 @@ const App = () => {
                             <div>
                                 <div className="tagline">
                                     <h1>Create your professional resume <br/> in seconds</h1>
-                                    <Link to="/Userform"><button className="btn btn-success">Build my resume now</button></Link>
+                                    <Link to="/Userform"><button className="btn btn-success btn-lg">Build my resume now</button></Link>
                                 </div>
                             </div>
                         </Route>
