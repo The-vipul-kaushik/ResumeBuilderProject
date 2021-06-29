@@ -1,6 +1,6 @@
 # QuickCV webApp
-It is a web app to make resumes and CVs.
-It provides tips for good resumes.
+It is a web app to make resumes and CVs.\
+It provides tips for good resumes.\
 It also has account management for proper management of all your resumes.
 
 ## TechStack used
