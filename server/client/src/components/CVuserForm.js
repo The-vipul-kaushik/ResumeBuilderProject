@@ -1,65 +1,91 @@
 import React, { Component } from 'react';
 import '../App.css';
-import PersonalDetails from './PersonalDetails';
-import Experience from './Experience';
+/*import axios from 'axios';
+import { saveAs } from 'file-saver';*/
+import CVpersonaldetails from './CVpersonaldetails';
+import CVexperience from './CVexperience';
 import Project from './Project';
 import Education from './Education';
-import Success from './Success';
-import Extras from './Extras';
-import Final from './Final';
+import CVsuccess from './CVsuccess';
+import CVachievements from './CVachievements';
+import CVawards from './CVawards';
+import CVreference from './CVreference';
+import CVfinal from './CVfinal';
 import Nav2 from './Nav2';
 import logo from '../images/cover.png';
-import temp1 from '../images/temp1.jpg';
+import temp1 from '../images/CVtemp1.JPG';
 
-class UserForm extends Component {
+class CVuserForm extends Component {
 
     state = {
 
         step: 0,
-        name: 'Vipul Kaushik',
-        careerObjective: 'I am passionate software seeking a position in the field of IT sector',
-        email: 'vipul@gmail.com',
-        phone: '7906591567',
-        linkedin: 'vipul kaushik',
-        github: 'the-vipul-kaushik',
-        skills: 'C, C++, python',
+        name: '',
+        careerObjective: '',
+        email: '',
+        phone: '',
+        linkedin: '',
+        designation: '',
+        skills: '',
 
-        exp1_org: 'Geeksforgeeks',
-        exp1_pos: 'TCW',
-        exp1_desc: 'I wrote many articles',
-        exp1_dur: '1 year',
+        exp1_org: '',
+        exp1_pos: '',
+        exp1_desc: '',
+        exp1_dur: '',
 
-        exp2_org: 'dataritz',
-        exp2_pos: 'Sde',
-        exp2_desc: 'I made projects',
-        exp2_dur: '2 months',
+        exp2_org: '',
+        exp2_pos: '',
+        exp2_desc: '',
+        exp2_dur: '',
 
-        proj1_title: 'Used car price predictor',
-        proj1_link: 'www.project.com',
-        proj1_desc: 'It predicts prices of old cars',
+        exp3_org: '',
+        exp3_pos: '',
+        exp3_desc: '',
+        exp3_dur: '',
 
-        proj2_title: 'Resume Builder',
-        proj2_link: 'www.project2.com',
-        proj2_desc: 'It helps to make resumes',
+        proj1_title: '',
+        proj1_link: '',
+        proj1_desc: '',
 
-        edu1_school: 'ABES ENGINEERING COLLEGE',
-        edu1_year: '2018-22',
-        edu1_qualification: 'B.Tech',
-        edu1_desc: 'I did B.Tech with 84 percent',
+        proj2_title: '',
+        proj2_link: '',
+        proj2_desc: '',
 
-        edu2_school: 'SDPS',
-        edu2_year: '2017-18',
-        edu2_qualification: 'Intermediate',
-        edu2_desc: 'I did my 12th with 91 percent',
+        edu1_school: '',
+        edu1_year: '',
+        edu1_qualification: '',
+        edu1_desc: '',
 
-        extra_1: 'Competitive programming',
-        extra_2: 'Coding',
-        extra_3: 'badminton',
-        extra_3: 'Chess',
-        extra_4: 'Ludo',
-        extra_5: 'Cricket',
+        edu2_school: '',
+        edu2_year: '',
+        edu2_qualification: '',
+        edu2_desc: '',
 
-        resume_title: '',
+        achievement_1: '',
+        achievement_2: '',
+        achievement_3: '',
+        achievement_4: '',
+
+        award_1: '',
+        award_2: '',
+        award_3: '',
+        award_4: '',
+
+        ref1_name: '',
+        ref1_job: '',
+        ref1_rel: '',
+        ref1_phn: '',
+        ref1_address: '',
+
+        ref2_name: '',
+        ref2_job: '',
+        ref2_rel: '',
+        ref2_phn: '',
+        ref2_address: '',
+
+        cv_title:'',
+
+
         status: 0
 
     }
@@ -68,7 +94,7 @@ class UserForm extends Component {
     nextStep = () => {
         const { step } = this.state;
         this.setState({
-            step: step<7 ? step + 1 : 0 
+            step: step<9 ? step + 1 : 0
         });
     };
 
@@ -97,7 +123,6 @@ class UserForm extends Component {
 
     handleChange = ({ target: { value, name } }) => this.setState({ [name]: value })
 
-    
     render() {
         const { step } = this.state;
         
@@ -106,9 +131,9 @@ class UserForm extends Component {
                 return (
                     <>
                     <Nav2 />
-                    <img src={logo} height="70" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                         <div className = "buttons" >
-                            <h1>Choose a Resume template</h1>
+                            <h1>Choose a CV template</h1>
                             <a onClick={()=>this.nextStep()}><img src={temp1}></img></a>
                         </div>  
                     </>
@@ -117,11 +142,11 @@ class UserForm extends Component {
                 return (
                     <>
                     <Nav2 />
-                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
+                        <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-dark">
 
-                            <PersonalDetails
+                            <CVpersonaldetails
                                 values={this.state}
                                 prevStep={this.prevStep}
                                 nextStep={this.nextStep}
@@ -142,7 +167,7 @@ class UserForm extends Component {
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-success">
 
-                            <Experience
+                            <CVexperience
                                 values={this.state}
                                 prevStep={this.prevStep}
                                 /*submitted={this.submitted}*/
@@ -209,7 +234,7 @@ class UserForm extends Component {
                     <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-info">
 
-                            <Extras
+                            <CVachievements
                                 values={this.state}
                                 prevStep={this.prevStep}
                                 nextStep={this.nextStep}
@@ -228,13 +253,12 @@ class UserForm extends Component {
                     <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
-                        <div className="container col-lg-8 mx-auto text-center ">
+                        <div className="container col-lg-8 mx-auto text-center bg-info">
 
-                            <Final
+                            <CVawards
                                 values={this.state}
                                 prevStep={this.prevStep}
                                 nextStep={this.nextStep}
-                                submitted={this.submitted}
                                 handleChange={this.handleChange}
                             />
                         </div>
@@ -250,9 +274,52 @@ class UserForm extends Component {
                     <Nav2 />
                     <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
                     <div className="App pt-5 mt-5">
+                        <div className="container col-lg-8 mx-auto text-center bg-info">
+
+                            <CVreference
+                                values={this.state}
+                                prevStep={this.prevStep}
+                                nextStep={this.nextStep}
+                                handleChange={this.handleChange}
+                            />
+                        </div>
+                        <br />
+                    </div>
+                    </>
+                );
+
+            case 8:
+
+                return (
+                    <>
+                    <Nav2 />
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
+                    <div className="App pt-5 mt-5">
+                        <div className="container col-lg-8 mx-auto text-center ">
+
+                            <CVfinal
+                                values={this.state}
+                                prevStep={this.prevStep}
+                                nextStep={this.nextStep}
+                                submitted={this.submitted}
+                                handleChange={this.handleChange}
+                            />
+                        </div>
+                        <br />
+                    </div>
+                    </>
+                );
+
+            case 9:
+
+                return (
+                    <>
+                    <Nav2 />
+                    <img src={logo} height="80" width="280" style={{'top':'0px','left':'0px', 'position':'absolute'}} />
+                    <div className="App pt-5 mt-5">
                         <div className="container col-lg-8 mx-auto text-center bg-dark">
 
-                            <Success 
+                            <CVsuccess 
                                 nextStep={this.nextStep}
                             />
                         </div>
@@ -265,4 +332,4 @@ class UserForm extends Component {
     }
 }
 
-export default UserForm;
+export default CVuserForm;
